@@ -1,0 +1,24 @@
+---
+title: Videos
+layout: page
+pageOrder: 2
+---
+
+<div class="page-videos">
+	<p>The following are videos which I feel are insiring, helpful or just neat. Eventually I will be housing my own screencasts and videos here, which will be differentiated in some way, but we're not there yet.</p>
+	<hr>
+	
+	<div class="row">
+		<% for document in @getCollection('videos').findAll().toJSON(): %>
+			<article class="col col-4">
+				<div class="overlay">
+					<img src="/assets/img/video-player.jpg" alt="Video Player Image">
+					<div class="overlay-content">
+						<h2><%=document.title%></h2>
+						<a href="<%=document.url%>" title="<%=document.title%>" class="btn btn-primary btn-small more">View</a>
+					</div>
+				</div>
+			</article>
+		<% end %>	
+	</div>
+</div>

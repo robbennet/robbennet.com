@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+<article id="page" class="page page-video">
+	<h2><%= @document.title %></h2>
+	<time datetime="<%= @document.date.toDateString() %>" pubdate><i class="icon-time"></i> <%= @document.date.toDateString() %></time>
+	<div class="video-wrapper">
+		<%- @content %>
+	</div>
+</article>

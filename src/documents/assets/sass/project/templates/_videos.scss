@@ -1,0 +1,30 @@
+.page-videos {
+	
+	article {
+		margin-bottom: $baseSpacing+em;
+
+		h2 {
+			@include font-size(20);
+		}
+	}
+
+	.overlay {
+		position: relative;
+
+		.overlay-content {
+			position: absolute;
+			top:0;
+			left:0;
+			width: 100%;
+			height: 100%;
+			background: rgba($black, 0.5);
+			color: $white;
+			text-align: center;
+			padding-top: 10%;
+
+			h2 {
+				padding-bottom: $baseSpacing+em;
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<div class="page">
+	<header>
+		<h2><%= @document.title %></h2>
+		<% if @document.subHeadline: %>
+			<h4 class="sub"><%= @document.subHeadline %></h4>
+		<% end %>	
+	</header>
+	
+	<%- @content %>
+</div>

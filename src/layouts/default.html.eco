@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!-- Our site title and description -->
+	<title><%= @getPreparedTitle() %></title>
+	<meta name="description" content="<%= @getPreparedDescription() %>" />
+	<meta name="keywords" content="<%= @getPreparedKeywords() %>" />
+	<meta name="author" content="<%= @site.author or '' %>" />
+
+	<!-- Output DocPad produced meta elements -->
+	<%- @getBlock('meta').toHTML() %>
+
+	<!-- Mobile viewport optimized: h5bp.com/viewport -->
+	<meta name="viewport" content="width=device-width" />
+
+	<!-- Icons -->
+    <link rel="shortcut icon" href="icons/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="icons/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="icons/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="icons/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="icons/apple-touch-icon-57-precomposed.png">
+
+	<!-- Shims: IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+	<%- @getBlock('styles').add(@site.styles).toHTML() %>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=379488379872";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+	<header class="primary-header" role="banner">
+		<div class="nav-brand">
+			<div class="container">
+				<h1><a href="/">Rob Bennet</a></h1>
+        		<span class="title">Science, Web Development &amp; Technology</span>
+			</div>
+        </div>
+		<nav class="primary-navigation" data-js="nav">
+            <div class="container">
+                <ul class="inline-list nav-items">
+                    <% for document in @getCollection('pages').toJSON(): %>
+						<li typeof="sioc:Page" about="<%= document.url %>" class="<%= 'active'  if @document.url is document.url %>">
+							<a href="<%= document.url %>" property="dc:title"><%= document.title %></a>
+						</li>
+					<% end %>
+                </ul>
+                <ul class="inline-list social">
+                    <li><a href="http://twitter.com/rwbennet" title="Follow Me on Twitter"><i class="icon-twitter"></i></a></li>
+                    <li><a href="http://github.com/houndstoothSTL" title="Fork Houndstooth on Github"><i class="icon-github"></i></a></li>
+                    <li><a href="http://instagram.com/rwbennet"><i class="icon-camera-retro"></i></a></li>
+                    <li><a href="http://pinterest.com/robbennet"><i class="icon-pinterest"></i></a></li>
+                    <li><a href="https://plus.google.com/107995579607877735432/posts"><i class="icon-google-plus"></i></a></li>
+                    <li><a href="http://www.linkedin.com/in/robertbennet"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="/atom.xml" title="Add Houndstooth to your reader"><i class="icon-rss"></i></a></li>
+                </ul>
+            </div>
+        </nav>		
+	</header>
+	
+	<div class="main-content" role="main">
+		<div class="container">
+			<div class="row">
+				<div class="col col-8"><%- @content %></div>
+				<div class="col col-3 offset-1">
+					<aside class="primary-sidebar">
+				
+						<img class="bio-image" src="/assets/img/rob-bennet.jpg" alt="Rob Bennet">
+						<section class="module module-sidebar">
+							<h3>About Me</h3>
+							<p>Hello, I'm Rob.  I'm a web developer, entreprenuer and proud geek. I like to post about JavaScript, Web Performance, Scientific inquiry and other geeky things like comic books and Star Wars. This blog is a dumping ground for thoughts and I will do my best to keep it organized.</p>
+						</section>
+						<section class="module module-sidebar">
+							<h3>My Associations</h3>
+							<p>I am co-founder and Director of Technology for Houndstooth and also currently working on Pixel Press.</p>
+							<ul class="affiliations kill-bullets">
+								<li>
+									<a href="http://madebyhoundstooth.com" title="Made by Houndstooth">
+										<img src="/assets/img/houndstooth-logo.svg" alt="Houndstooth Logo" width="24" height="24"> Houndstooth
+									</a>
+								</li>
+								<li>
+									<a href="http://pixelpressgame.com" title="Pixel Press - Draw your Own Video Game">
+										<img src="/assets/img/pixelpress-logo.svg" alt="Pixel Press Logo" width="24" height="24"> Pixel Press
+									</a>
+								</li>
+							</ul>
+						</section>
+						<section class="module module-sidebar">
+							<h3>Contact Me</h3>
+							<p>Hit me up on the social links in the header, or go this route:</p>
+							<ul class="contact kill-bullets">
+								<li><i class="icon-group"></i> Hangouts: rwbennet</li>
+								<li><i class="icon-mobile-phone"></i> Skype: rwbennet</li>
+								<li><a href="mailto:rwbennet@gmail.com"><i class="icon-envelope"></i> Email Me</a></li>
+							</ul>
+						</section>
+
+					</aside>
+				</div>
+			</div>
+		</div>
+
+
+		<footer class="primary-footer" role="contentinfo">
+			<div class="container">
+				<div class="row">
+					<div class="col col-12">
+						<p>&copy; <%- (new Date()).getFullYear() %> Rob Bennet Interactive.</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<!-- Scripts -->
+	<%- @getBlock('scripts').add(@site.scripts).toHTML() %>
+</body>
+</html>

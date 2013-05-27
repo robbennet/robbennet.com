@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<article id="post" class="post">
+	<header>
+		<img src="/assets/img/featured-images/<%= @document.featImage %>" alt="<%= @document.title %>" class="align-left">
+		<h1><%= @document.title %></h1>
+		<div class="post-meta">
+			<time datetime="<%= @document.date.toDateString() %>" pubdate><i class="icon-time"></i> <%= @document.date.toDateString() %></time>
+			<span class="post-category"><i class="icon-folder-close-alt"></i>
+				<a href="" title="Read all posts in: <%= tag %>"><%= @document.category %></a>
+			</span>
+			<span class="post-tags"><i class="icon-tags"></i> 
+				<% for tag in @document.tags: %>
+					<a href="" title="Read all posts tagged: <%= tag %>"><%= tag %></a>
+				<% end %>
+			</span>
+		</div>
+	</header>
+	<hr>
+	<section class="post-content">
+		<%- @content %>
+	</section>
+
+	<footer>
+		<section id="related">
+			<h3>Related Articles</h3>
+			<nav class="linklist row">
+				<% for document in @document.relatedDocuments: %>
+					<li class="col col-4">
+						<img class="align-left" src="/assets/img/featured-images/<%= document.featImage %>" alt="<%= document.title %>" width="80" height="80">
+						<span><%= document.date.toDateString() %></span>
+						<a href="<%= document.url %>"><%= document.title %></a>
+					</li>
+				<% end %>
+			</nav>
+		</section>
+
+		<section class="comments">
+
+			<div id="fbc" class="fb-comments" data-href="http://robbennet.com/<%= @document.relativeBase %>" data-width="776" data-num-posts="10"></div>
+
+		</section>
+
+	</footer>
+
+</article>

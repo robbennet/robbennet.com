@@ -1,0 +1,45 @@
+{
+  "name": "robbennet.com",
+  "version": "0.1.0",
+  "description": "Rob Bennet's personal blog.",
+  "homepage": "http://robbennet.com",
+  "keywords": [
+    "technology",
+    "development",
+    "web",
+    "javascript",
+    "programming"
+  ],
+  "author": "Rob Bennet",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robbennet/robbennet.git"
+  },
+  "engines": {
+    "node": "0.10",
+    "npm": "1.2"
+  },
+  "dependencies": {
+    "docpad": "6.x",
+    "docpad-plugin-downloader": "2.x",
+    "docpad-plugin-cleanurls": "2.x",
+    "docpad-plugin-coffeescript": "2.x",
+    "docpad-plugin-eco": "2.x",
+    "docpad-plugin-less": "2.x",
+    "docpad-plugin-marked": "2.x",
+    "docpad-plugin-partials": "2.x",
+    "docpad-plugin-related": "~2.0.5",
+    "docpad-plugin-stylus": "2.x",
+    "docpad-plugin-text": "2.x",
+    "docpad-plugin-handlebars": "~2.2.1",
+    "docpad-plugin-nativecomments": "~2.0.0",
+    "docpad-plugin-gist": "~2.0.0"
+  },
+  "devDependencies": {
+    "docpad-plugin-livereload": "2.x"
+  },
+  "main": "node_modules/docpad/bin/docpad-server",
+  "scripts": {
+    "start": "node_modules/docpad/bin/docpad-server"
+  }
+}

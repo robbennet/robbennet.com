@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<div class="comments-new">
+	<h2>New Comment</h2>
+
+	<p>Enter your comment here. Markdown supported yo!</p>
+
+	<form action="/comment" method="POST">
+		<input type="hidden" name="for" value="<%= @document.id %>" />
+		<label for="author">Name</label>
+		<input type="author" name="author" placeholder="Name"/>
+		<label for="email">Email</label>
+		<input type="email" name="email" placeholder="Email (not displayed)">
+		<label for="website">Website</label>
+		<input type="url" name="website" placeholder="Website">
+		<label for="body">Comment</label>
+		<textarea name="body" placeholder="Comment"></textarea>
+		<button type="submit" value="Post Comment" class="btn btn-primary btn-small">Post Comment</button>
+	</form>
+</div>
+
+<div class="comments-list">
+	<h2>Comments</h2>
+	<% if @getComments().length is 0: %>
+		<p>No comments yet</p>
+	<% else: %>
+		<% for comment in @getComments().toJSON(): %>
+			<article>
+				<p><%= comment.email %></p>
+				<img src="<%= @getGravatarUrl("rwbennet@gmail.com") %>" alt="">
+				<h4><i class="icon-user"></i> <%= comment.author or comment.contentRenderedWithoutLayouts %></h4>
+				<a href="<%= comment.website %>" class="comment-meta"><i class="icon-link"></i> <%= comment.website %></a>
+				<p><%= comment.body %></p>
+			</article>
+		<% end %>
+	<% end %>
+</div>
